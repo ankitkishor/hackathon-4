@@ -19,8 +19,7 @@ class BusRouteImpTest {
 
     @After
     public void tearDown() throws Exception {
-        busRoute = null;
-        route=null;
+
     }
     @Test
     public void givenWrongDataFormatThrowsNumberFormatException() {
@@ -28,23 +27,35 @@ class BusRouteImpTest {
         assertNotEquals(12, output.size());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
    public void readingFile() {
         List<BusRoute> output = busRoute.readingFile(fileName);
         assertEquals(49,output.size());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getSortedAccDistanceTraveled() {
         List<BusRoute> output = busRoute.readingFile(fileName);
         assertEquals(49.5,busRoute. getSortedAccDistanceTraveled(output).get(0).getTravelledKM(),0);
 
     }
+    @Test
+    public void getSortedAccDistanceTraveledFailed() {
+        List<BusRoute> output = busRoute.readingFile(fileName);
 
-    @org.junit.jupiter.api.Test
+        assertNotEquals(48.5,busRoute.getSortedAccDistanceTraveled(output).get(0).getTravelledKM(),0);
+    }
+
+    @Test
     void getTotalCollectionBySales() {
         List<BusRoute> output = busRoute.readingFile(fileName);
         assertEquals(10348.0,busRoute.getTotalCollectionBySales(output));
     }
+    @Test
+    void getTotalCollectionBySalesFailed() {
+        List<BusRoute> output = busRoute.readingFile(fileName);
+        assertNotEquals(1.0,busRoute.getTotalCollectionBySales(output));
+    }
+
 }
 

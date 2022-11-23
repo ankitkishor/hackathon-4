@@ -74,6 +74,7 @@ public class BusRouteImp {
 
     public static void main(String[] args) {
         BusRouteImp busRouteImp= new BusRouteImp();
+        System.out.println(busRouteImp.readingFile("sample.csv"));
         System.out.println(busRouteImp.getTotalCollectionBySales(busRouteImp.readingFile("sample.csv")));
         System.out.println(busRouteImp.getSortedAccDistanceTraveled(busRouteImp.readingFile("sample.csv")));
     }
